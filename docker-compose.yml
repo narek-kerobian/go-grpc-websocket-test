@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    restart: "no"
+    depends_on:
+      - inmemds
+    ports:
+      - "8080:${APP_PORT}"
+    env_file:
+      - .env
+
+  inmemds:
+    image: memcached:latest
+    restart: "no"
+    ports:
+      - "${CACHE_PORT}:${CACHE_PORT}"
+    env_file:
+      - .env
+
+

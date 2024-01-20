@@ -1,0 +1,7 @@
+{
+    auto_https off
+}
+
+:{$APP_PORT} {
+         reverse_proxy localhost:10080
+}
