@@ -2,17 +2,22 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/narek-kerobian/go-grpc-websocket-test/config"
+	"github.com/narek-kerobian/go-grpc-websocket-test/service"
 )
 
 const appPort = "10080"
 
 func main() {
-    r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+    // Initialize database
+    db := service.InitCache()
 
-	r.Run(":" + appPort)
+    // Load mock data
+    service.LoadMockData(db)
+
+    // Initialize routes
+    r := gin.Default()
+    config.InitRoutes(r, db)
+
+    r.Run(":" + appPort)
 }
