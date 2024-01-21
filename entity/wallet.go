@@ -2,6 +2,8 @@ package entity
 
 import (
 	"errors"
+	"fmt"
+	"log"
 
 	"github.com/hashicorp/go-memdb"
 )
@@ -103,7 +105,10 @@ func (w *Wallet) DeductBalance(db *memdb.MemDB, bmr BalanceMovementRequestObject
 
 func (w *Wallet) BuildResponse(e []string) (response WalletResponseObject) {
     response.Wallet = *w
-    response.Errors = e
+    for _, err := range e {
+        log.Println(fmt.Sprintf("[Application Log] %s", err))
+        response.Errors = append(response.Errors, err)
+    }
 
     return
 }

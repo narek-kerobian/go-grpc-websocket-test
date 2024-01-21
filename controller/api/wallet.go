@@ -16,14 +16,14 @@ var (
 func WalletDeposit(db *memdb.MemDB) gin.HandlerFunc {
     return func (c *gin.Context) {
         if err := c.Bind(&balanceMovementRequestObject); err != nil {
-            errors = append(errors, "[Application Log] Invalid input: " + err.Error())
+            errors = append(errors, "Invalid input: " + err.Error())
             c.JSON(400, wallet.BuildResponse(errors))
             return
         }
 
         // Update balance
         if _, err := wallet.AugmentBalance(db, balanceMovementRequestObject); err != nil {
-            errors = append(errors, "[Application Log] Invalid input: " + err.Error())
+            errors = append(errors, "Invalid input: " + err.Error())
             c.JSON(400, wallet.BuildResponse(errors))
             errors = []string{}
             return
@@ -38,7 +38,7 @@ func WalletWithdraw(db *memdb.MemDB) gin.HandlerFunc {
     return func (c *gin.Context) {
         // Bind route param to balanceRouteParamObject
         if err := c.Bind(&balanceMovementRequestObject); err != nil {
-            errors = append(errors, "[Application Log] Invalid input: " + err.Error())
+            errors = append(errors, "Invalid input: " + err.Error())
             c.JSON(400, wallet.BuildResponse(errors))
             errors = []string{}
             return
@@ -46,7 +46,7 @@ func WalletWithdraw(db *memdb.MemDB) gin.HandlerFunc {
 
         // Fake balance
         if _, err := wallet.DeductBalance(db, balanceMovementRequestObject); err != nil {
-            errors = append(errors, "[Application Log] Invalid input: " + err.Error())
+            errors = append(errors, "Invalid input: " + err.Error())
             c.JSON(400, wallet.BuildResponse(errors))
             errors = []string{}
             return
@@ -61,7 +61,7 @@ func WalletBalance(db *memdb.MemDB) gin.HandlerFunc {
     return func (c *gin.Context) {
         // Bind route param to balanceRouteParamObject
         if err := c.ShouldBindUri(&balanceRouteParamObject); err != nil {
-            errors = append(errors, "[Application Log] Invalid input: " + err.Error())
+            errors = append(errors, "Invalid input: " + err.Error())
             c.JSON(400, wallet.BuildResponse(errors))
             errors = []string{}
             return

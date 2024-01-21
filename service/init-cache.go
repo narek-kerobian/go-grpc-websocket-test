@@ -1,13 +1,13 @@
 package service
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/hashicorp/go-memdb"
 )
 
 func InitCache() *memdb.MemDB {
-    fmt.Println("[Application Log] Initializing the memdb data store with schema mappings")
+    log.Println("[Application Log] Initializing the memdb data store with schema mappings")
 
     // Create the DB schema
     schema := &memdb.DBSchema{

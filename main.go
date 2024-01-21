@@ -6,8 +6,6 @@ import (
 	"github.com/narek-kerobian/go-grpc-websocket-test/service"
 )
 
-const appPort = "10080"
-
 func main() {
     // Initialize database
     db := service.InitCache()
@@ -19,5 +17,6 @@ func main() {
     r := gin.Default()
     config.InitRoutes(r, db)
 
-    r.Run(":" + appPort)
+    // Hardcoded port is required for the reverse proxy
+    r.Run(":10080")
 }

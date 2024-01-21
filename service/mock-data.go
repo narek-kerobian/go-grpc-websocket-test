@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 
 	"github.com/hashicorp/go-memdb"
@@ -9,7 +10,7 @@ import (
 )
 
 func LoadMockData(db *memdb.MemDB) {
-    fmt.Println("[Application Log] Loading mock data")
+    log.Println("[Application Log] Loading mock data")
 
     for id := 1; id <= 5; id++ {
         wallet := entity.Wallet{

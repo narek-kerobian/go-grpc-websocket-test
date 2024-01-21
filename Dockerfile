@@ -5,6 +5,7 @@ WORKDIR /opt/go-grpc-websocket-test
 
 COPY . /opt/go-grpc-websocket-test
 
+# Build the binary
 RUN CGO_ENABLED=0 GOOS=linux go build
 
 # Run the application as a service
@@ -24,7 +25,9 @@ COPY docker/supervisord.conf /etc/supervisor/supervisord.conf
 COPY docker/Caddyfile /etc/Caddyfile
 COPY docker/entrypoint.sh /root/entrypoint.sh
 
+# Set exposed ports
 EXPOSE ${APP_PORT}
 
+# Define the entrypoint
 ENTRYPOINT ["sh", "/root/entrypoint.sh"]
 
