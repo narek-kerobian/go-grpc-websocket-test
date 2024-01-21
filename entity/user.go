@@ -1,6 +1,8 @@
 package entity
 
-import "github.com/hashicorp/go-memdb"
+import (
+	"github.com/hashicorp/go-memdb"
+)
 
 // Entity struct
 type User struct {

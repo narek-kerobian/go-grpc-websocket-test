@@ -26,7 +26,7 @@ COPY docker/Caddyfile /etc/Caddyfile
 COPY docker/entrypoint.sh /root/entrypoint.sh
 
 # Set exposed ports
-EXPOSE ${APP_PORT}
+EXPOSE ${APP_PORT} ${RPC_PORT}
 
 # Define the entrypoint
 ENTRYPOINT ["sh", "/root/entrypoint.sh"]

@@ -15,7 +15,7 @@ func LoadMockData(db *memdb.MemDB) {
     for id := 1; id <= 5; id++ {
         wallet := entity.Wallet{
             Id: uint(id),
-            Balance: rand.Float64(),
+            Balance: rand.Float64() * 1000,
         }
         wallet.Insert(db);
 

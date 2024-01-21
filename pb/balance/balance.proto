@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+service BalanceService {
+    rpc Balance(BalanceServiceRequest) returns (BalanceServiceReply) {}
+}
+
+message BalanceServiceRequest {
+    string userId = 1;
+}
+
+message BalanceServiceReply {
+    double balance = 1;
+}

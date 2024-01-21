@@ -5,3 +5,7 @@
 :{$APP_PORT} {
          reverse_proxy localhost:10080
 }
+
+:{$RPC_PORT} {
+         reverse_proxy localhost:10081
+}

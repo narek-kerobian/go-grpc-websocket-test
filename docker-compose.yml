@@ -6,6 +6,7 @@ services:
     restart: "no"
     ports:
       - "8080:${APP_PORT}"
+      - "8081:${RPC_PORT}"
     env_file:
       - .env
 
